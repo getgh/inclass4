@@ -224,7 +224,7 @@ class EmojiCanvasPainter extends CustomPainter {
       ..lineTo(center.dx + faceRadius * 0.2, center.dy - faceRadius * 0.8)
       ..lineTo(center.dx, center.dy - faceRadius * 1.5)
       ..close();
-    canvas.drawPath(hatPath, hatPaint); // Fixed argument order here
+    canvas.drawPath(hatPath, hatPaint); 
 
     canvas.drawCircle(
       Offset(center.dx, center.dy - faceRadius * 1.5),
@@ -240,7 +240,7 @@ class EmojiCanvasPainter extends CustomPainter {
         ..strokeWidth = faceRadius * 0.05,
     );
   }
-
+ // confetti party face
   void _drawConfetti(Canvas canvas, Offset center, double faceRadius) {
     final confettiColors = [Colors.blue, Colors.green, Colors.pink, Colors.purple, Colors.red];
     final random = Random((center.dx + center.dy).toInt()); // Fixed Random constructor
@@ -259,9 +259,10 @@ class EmojiCanvasPainter extends CustomPainter {
       );
     }
   }
+  // drew sparkles around the heart
 void _drawSparkles(Canvas canvas, Offset center, double heartSize) {
     final sparklePaint = Paint()..color = Colors.white;
-    final random = Random((center.dx + center.dy).toInt()); // Fixed Random constructor
+    final random = Random((center.dx + center.dy).toInt());
 
     for (int i = 0; i < 8; i++) {
       final angle = random.nextDouble() * 2 * pi;
@@ -298,6 +299,7 @@ void _drawSparkles(Canvas canvas, Offset center, double heartSize) {
       canvas.drawPath(path, sparklePaint);
     }
   }
+  // heart shape with gradient fill
 void _drawHeart(Canvas canvas, Offset center, double heartSize) {
     final heartPaint = Paint()
       ..shader = ui.Gradient.linear(
