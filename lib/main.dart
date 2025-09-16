@@ -21,7 +21,7 @@ class EmojiDrawingApp extends StatelessWidget {
     );
   }
 }
-
+//wid
 class EmojiDrawingScreen extends StatefulWidget {
   const EmojiDrawingScreen({super.key});
 
@@ -168,7 +168,7 @@ class FacePainter {
     );
   }
 }
-
+ // custom paint
 class EmojiCanvasPainter extends CustomPainter {
   final List<Offset> tapPositions;
   final String currentEmoji;
@@ -181,7 +181,7 @@ class EmojiCanvasPainter extends CustomPainter {
       _drawEmojiAtPosition(canvas, position, size);
     }
   }
-
+ // positioned emoji
   void _drawEmojiAtPosition(Canvas canvas, Offset position, Size canvasSize) {
     final facePainter = FacePainter();
     final emojiSize = min(canvasSize.width, canvasSize.height) * 0.2;
@@ -216,7 +216,7 @@ class EmojiCanvasPainter extends CustomPainter {
     _drawPartyHat(canvas, center, faceRadius);
     _drawConfetti(canvas, center, faceRadius);
   }
-
+ // party hat
   void _drawPartyHat(Canvas canvas, Offset center, double faceRadius) {
     final hatPaint = Paint()..color = Colors.pink;
     final hatPath = Path()
