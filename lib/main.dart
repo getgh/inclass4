@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-
+// Ensure to add 'dart:math' for mathematical functions like pi, cos, and sin.
 void main() {
   runApp(const ShapesDemoApp());
 }
