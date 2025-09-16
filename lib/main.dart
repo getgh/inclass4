@@ -259,10 +259,71 @@ class EmojiCanvasPainter extends CustomPainter {
       );
     }
   }
- // Draw a heart shape
+void _drawSparkles(Canvas canvas, Offset center, double heartSize) {
+    final sparklePaint = Paint()..color = Colors.white;
+    final random = Random((center.dx + center.dy).toInt()); // Fixed Random constructor
 
- // Draw a heart shape
+    for (int i = 0; i < 8; i++) {
+      final angle = random.nextDouble() * 2 * pi;
+      final distance = heartSize * 0.6 * random.nextDouble();
+      final sparkleCenter = Offset(
+        center.dx + cos(angle) * distance,
+        center.dy + sin(angle) * distance,
+      );
 
+      final path = Path();
+      final outerRadius = heartSize * 0.03;
+      final innerRadius = heartSize * 0.015;
+
+      for (int j = 0; j < 5; j++) { // Changed i to j to avoid conflict with outer loop
+        final outerAngle = 2 * pi * j / 5 - pi / 2;
+        final innerAngle1 = 2 * pi * (j + 0.5) / 5 - pi / 2 + pi / 5;
+        final innerAngle2 = 2 * pi * (j + 0.5) / 5 - pi / 2 - pi / 5;
+
+        path.moveTo(
+          sparkleCenter.dx + cos(outerAngle) * outerRadius,
+          sparkleCenter.dy + sin(outerAngle) * outerRadius,
+        );
+        path.lineTo(
+          sparkleCenter.dx + cos(innerAngle1) * innerRadius,
+          sparkleCenter.dy + sin(innerAngle1) * innerRadius,
+        );
+        path.lineTo(
+          sparkleCenter.dx + cos(innerAngle2) * innerRadius,
+          sparkleCenter.dy + sin(innerAngle2) * innerRadius,
+        );
+        path.close();
+      }
+
+      canvas.drawPath(path, sparklePaint);
+    }
+  }
+void _drawHeart(Canvas canvas, Offset center, double heartSize) {
+    final heartPaint = Paint()
+      ..shader = ui.Gradient.linear(
+        Offset(center.dx - heartSize, center.dy - heartSize),
+        Offset(center.dx + heartSize, center.dy + heartSize),
+        [Colors.red, Colors.pink],
+        [0.0, 1.0],
+      )
+      ..style = PaintingStyle.fill;
+
+    final path = Path()
+      ..moveTo(center.dx, center.dy - heartSize * 0.7)
+      ..cubicTo(
+        center.dx + heartSize * 0.5, center.dy - heartSize,
+        center.dx + heartSize, center.dy - heartSize * 0.3,
+        center.dx, center.dy + heartSize * 0.3,
+      )
+      ..cubicTo(
+        center.dx - heartSize, center.dy - heartSize * 0.3,
+        center.dx - heartSize * 0.5, center.dy - heartSize,
+        center.dx, center.dy - heartSize * 0.7,
+      );
+
+    canvas.drawPath(path, heartPaint);
+    _drawSparkles(canvas, center, heartSize);
+  }
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
