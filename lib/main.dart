@@ -243,7 +243,7 @@ class EmojiCanvasPainter extends CustomPainter {
  // confetti party face
   void _drawConfetti(Canvas canvas, Offset center, double faceRadius) {
     final confettiColors = [Colors.blue, Colors.green, Colors.pink, Colors.purple, Colors.red];
-    final random = Random((center.dx + center.dy).toInt()); // Fixed Random constructor
+    final random = Random((center.dx + center.dy).toInt()); 
 
     for (int i = 0; i < 15; i++) {
       final color = confettiColors[random.nextInt(confettiColors.length)];
@@ -276,7 +276,7 @@ void _drawSparkles(Canvas canvas, Offset center, double heartSize) {
       final outerRadius = heartSize * 0.03;
       final innerRadius = heartSize * 0.015;
 
-      for (int j = 0; j < 5; j++) { // Changed i to j to avoid conflict with outer loop
+      for (int j = 0; j < 5; j++) {
         final outerAngle = 2 * pi * j / 5 - pi / 2;
         final innerAngle1 = 2 * pi * (j + 0.5) / 5 - pi / 2 + pi / 5;
         final innerAngle2 = 2 * pi * (j + 0.5) / 5 - pi / 2 - pi / 5;
