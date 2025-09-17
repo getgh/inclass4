@@ -30,8 +30,8 @@ class EmojiDrawingScreen extends StatefulWidget {
 }
 
 class _EmojiDrawingScreenState extends State<EmojiDrawingScreen> {
-  String _currentEmoji = 'Smiley';
-  final List<String> _emojiOptions = ['Smiley', 'Party Face', 'Heart'];
+  String _currentEmoji = 'Smiley Face';
+  final List<String> _emojiOptions = ['Smiley Face', 'Party Face', 'Heart'];
   List<Offset> _tapPositions = [];
 
   @override
@@ -40,7 +40,7 @@ class _EmojiDrawingScreenState extends State<EmojiDrawingScreen> {
       appBar: AppBar(
         title: const Text('Interactive Emoji Drawing'),
         centerTitle: true,
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
